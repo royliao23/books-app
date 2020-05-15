@@ -7,13 +7,6 @@ import Mainpage from '../signin.js';
 import  { Redirect } from 'react-router-dom'
 const API_URL = "https://royliao.pythonanywhere.com/api-token-auth/";
 const USERAPI_URL ="http://royliao.pythonanywhere.com/users/retrieve/";
-const usn=(username)=>{axios.get('https://royliao.pythonanywhere.com/users/retrieve/'+username)
-.then((response) => {
-  //  localStorage.setItem('pers',this.state.permit);
-  //  alert(response.data[0]);
-
-    return username+response.data[0];
-}) }
 class Login extends Component {
     state ={
         tok:localStorage.getItem('authcode'),
@@ -43,7 +36,7 @@ class Login extends Component {
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
     }
- 
+
     handleSubmit(event) {
         
         //   alert('A username and password was submitted: ' + this.state.username + " " + this.state.password);
@@ -56,11 +49,10 @@ class Login extends Component {
                        );
            localStorage.setItem('authcode',response.data.token);
            localStorage.setItem('usern',this.state.username);
-
-          // localStorage.setItem('pers',this.handleuser(this.state.username));
-          // localStorage.setItem('pers',usn('andyliao'));
+           localStorage.setItem('pers',this.handleuser(this.state.username));
+            
            this.setState(() => ({ tok:localStorage.getItem('authcode') }));
-           this.handleuser(this.state.username);
+        
                        
            
         
@@ -103,20 +95,16 @@ class Login extends Component {
        }
    
     handleuser(username) {
-
+        
      //   alert('A username and password was submitted: ' + this.state.username + " " + this.state.password);
       
     //axios.get(`${USERAPI_URL}`,  this.state.username)
     axios.get('https://royliao.pythonanywhere.com/users/retrieve/'+username)
     .then((response) => {
-      //  localStorage.setItem('pers',this.state.permit);
-       // alert(response.data[0]);
-      
-        this.setState({permit:response.data[0]});
-      //  alert(this.state.permit);
-     
-        localStorage.setItem('pers',this.state.permit)
-        window.location.reload(false);
+        return response.data[0]
+        //this.setState({permit:response.data[0]});
+       // alert(this.state.permit[0]);
+        //localStorage.setItem('permito',this.state.permit)
     })
     .catch((error) => {
         // Error 😨
@@ -144,7 +132,8 @@ class Login extends Component {
         }
         console.log(error.config);
     });
-  
+   
+    
     }
 
     render() {
@@ -179,7 +168,7 @@ class Login extends Component {
 </div>
 ) : ( 
 
-<Main user={localStorage.getItem('usern') } permit={this.state.permit} />
+<Main user={localStorage.getItem('usern') } permit={localStorage.getItem('pers')} />
 
 
 ) 

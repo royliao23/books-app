@@ -6,6 +6,7 @@ import Search from './component/Example';
 import App1 from './component/App1';
 import Appupload3 from './component/appupload3';
 import App2 from './component/App2';
+import Appaddonly from './component/Appaddonly';
 import App3 from './component/Appviewonly3';
 import Search11 from './component/Search';
 import Login from './component/login';
@@ -84,10 +85,15 @@ export default function BasicExample(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  //alert(props.permit);
+
   return (
+
     <Router>
       <div>
-   
+     
+    
       <Navbar color="light" light expand="md"> 
         <NavbarBrand href="/books-app" ><h1>EasyGo</h1></NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -124,41 +130,52 @@ export default function BasicExample(props) {
             <NavItem>
             <NavLink exact to="/suppliers" className="inactive" activeClassName="active" tag={RRNavLink}>Warehouse</NavLink>
             </NavItem>
+            {(localStorage.getItem('pers')==98) ? (
+            <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret>
+              Users
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>
+              <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
+              </DropdownItem>
+              <DropdownItem>
+              <NavLink exact to="/signup" tag={RRNavLink}>Sign Up </NavLink>
+              </DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>
+              <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+          
+              ) : (localStorage.getItem('pers')==97)?  <NavItem>
+              <NavLink tag={RRNavLink}  to="/accounts" className="inactive" activeClassName="active" >Help</NavLink>
+              </NavItem> : ''}
+
+
+              {(localStorage.getItem('pers')==98) ? (
+            <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret>
+              Help
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>
+              <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
+              </DropdownItem>
+              <DropdownItem>
+              <NavLink exact to="/signup" tag={RRNavLink}>Sign Up </NavLink>
+              </DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>
+              <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+          
+              ) :''}
+           
             
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret >
-                Setting
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                <NavLink exact to="/suppliers" tag={RRNavLink}>About1</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                <NavLink exact to="/suppliers" tag={RRNavLink}>About1</NavLink>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                <NavLink exact to="/accounts" tag={RRNavLink}>Report</NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                User
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                <NavLink exact to="/signup" tag={RRNavLink}>Sign Up </NavLink>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
           </Nav>
           
           <NavLink onClick={()=>{localStorage.setItem('accesstoken',{'Authorization':"Token "});
@@ -189,7 +206,7 @@ export default function BasicExample(props) {
             <Dashboard />
           </Route>
           <Route path="/books-app">
-            <Home />
+            <Home  per={localStorage.getItem('pers')} />
             </Route>
           <Route path="/suppliers">
             <Dashboard />
@@ -217,14 +234,25 @@ export default function BasicExample(props) {
 // You can think of these components as "pages"
 // in your app.
 
-function Home() {
+function Home(props) {
+  
+  let mainview = ((3<2)?(<div><App3 /></div>):
+  (
+    ((localStorage.getItem('permito').indexOf(97))?(<div><Appaddonly /> </div>):
+    (<div><Appaddonly /> </div>))
+  )
+  );
   return (
+  
     <div>
- <App3 />
+    
+  {
+
+  (localStorage.getItem('pers')==98) ? (<div><App3 /></div>) : (localStorage.getItem('pers')==97)? <div><Appaddonly /> </div> : "You are not allowed to access this tab!"}
+
     </div>
   );
-}
-
+  }
 function About() {
   return (
     <div>

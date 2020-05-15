@@ -7,10 +7,18 @@ import Mainpage from './signin.js';
 //const API_URL= 'https://royliao.pythonanywhere.com/snippets/'
 class App extends Component {
  
+  state ={
     
+    
+
+   
+   
+    
+
+}
     render() {
     
-      
+      localStorage.setItem('permito',this.state.permit)
       return (
         <div className="App container">
           <Login /> 
