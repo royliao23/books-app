@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d94abcb6581b861d4a2abd24a405f7df",
+    "revision": "880c50fc77b31b92976ae9695260feb1",
     "url": "/books-app/index.html"
   },
   {
-    "revision": "d1f96f8345c49d61502a",
-    "url": "/books-app/static/css/2.6e1be5aa.chunk.css"
+    "revision": "a829b422da2afc555ba1",
+    "url": "/books-app/static/css/2.76ae294a.chunk.css"
   },
   {
-    "revision": "de209eb77dbe71df5c7f",
+    "revision": "55e64aefc9b7df7adb92",
     "url": "/books-app/static/css/main.dbe9779d.chunk.css"
   },
   {
-    "revision": "d1f96f8345c49d61502a",
-    "url": "/books-app/static/js/2.93c0507b.chunk.js"
+    "revision": "a829b422da2afc555ba1",
+    "url": "/books-app/static/js/2.652e7c4b.chunk.js"
   },
   {
     "revision": "65e264470299558a084d762ca4085c2c",
-    "url": "/books-app/static/js/2.93c0507b.chunk.js.LICENSE.txt"
+    "url": "/books-app/static/js/2.652e7c4b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "de209eb77dbe71df5c7f",
-    "url": "/books-app/static/js/main.1bcf5be1.chunk.js"
+    "revision": "55e64aefc9b7df7adb92",
+    "url": "/books-app/static/js/main.0c02b120.chunk.js"
   },
   {
     "revision": "0516a4b05870c5bc4c3b",
